@@ -1,0 +1,1354 @@
+* {
+    box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+    min-height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #222;
+
+    background-image: url("./assets/library-bg.jpg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    background-attachment: fixed;
+    background-color: #2b2f28;
+}
+
+/* Dark overlay over the background */
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(10, 14, 12, 0.35);
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Main application */
+
+.app {
+    position: relative;
+    z-index: 1;
+
+    max-width: 900px;
+    margin: 0 auto;
+
+    padding: 16px;
+
+    min-height: 100vh;
+}
+
+
+/* ==========================================
+   HEADER
+   ========================================== */
+
+header {
+    background: rgba(15, 22, 18, 0.62);
+
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+
+    border-radius: 8px;
+
+    padding: 14px 18px;
+
+    margin-bottom: 16px;
+
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+}
+
+header h1 {
+    margin: 0 0 4px 0;
+
+    font-size: 24px;
+
+    color: #ffffff;
+}
+
+header p {
+    margin: 0 0 16px 0;
+
+    color: #e4e9e6;
+}
+
+
+/* ==========================================
+   TOP NAVIGATION
+   ========================================== */
+
+nav {
+    display: flex;
+
+    gap: 8px;
+
+    margin-bottom: 0;
+
+    flex-wrap: wrap;
+}
+
+nav button {
+    padding: 8px 14px;
+
+    border: 1px solid rgba(255, 255, 255, 0.5);
+
+    background: rgba(255, 255, 255, 0.85);
+
+    border-radius: 4px;
+
+    cursor: pointer;
+
+    font-size: 14px;
+
+    color: #222;
+}
+
+nav button:hover {
+    background: #ffffff;
+}
+
+nav button.active {
+    background: #2c6e49;
+
+    color: #ffffff;
+
+    border-color: #2c6e49;
+}
+
+
+/* ==========================================
+   GENERAL BUTTONS
+   ========================================== */
+
+button {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+button.btn {
+    padding: 6px 12px;
+
+    border: none;
+
+    border-radius: 4px;
+
+    background: #2c6e49;
+
+    color: #ffffff;
+
+    cursor: pointer;
+
+    font-size: 14px;
+}
+
+button.btn:hover {
+    opacity: 0.9;
+}
+
+button.btn.secondary {
+    background: #888888;
+}
+
+button.btn.danger {
+    background: #c0392b;
+}
+
+button.btn.success {
+    background: #347a4a;
+}
+
+button.btn:disabled {
+    background: #bbbbbb;
+
+    cursor: not-allowed;
+}
+
+
+/* ==========================================
+   MAIN CONTENT
+   ========================================== */
+
+.content {
+    width: 100%;
+}
+
+.page-header {
+    margin-bottom: 20px;
+}
+
+.page-header h1 {
+    margin: 0 0 4px 0;
+
+    color: #ffffff;
+}
+
+.page-header p {
+    margin: 0;
+
+    color: #e4e9e6;
+}
+
+
+/* ==========================================
+   CARDS / PANELS
+   ========================================== */
+
+.card,
+.panel {
+    background: rgba(255, 255, 255, 0.93);
+
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+
+    border: 1px solid rgba(255, 255, 255, 0.6);
+
+    border-radius: 6px;
+
+    padding: 16px;
+
+    margin-bottom: 16px;
+
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.18);
+}
+
+.card h2,
+.panel h2 {
+    margin: 0 0 15px 0;
+
+    font-size: 20px;
+
+    color: #222;
+}
+
+
+/* ==========================================
+   DASHBOARD SUMMARY CARDS
+   ========================================== */
+
+.summary-cards,
+.stats {
+    display: flex;
+
+    gap: 12px;
+
+    flex-wrap: wrap;
+
+    margin-bottom: 16px;
+}
+
+.summary-cards .card,
+.stat {
+    flex: 1;
+
+    min-width: 140px;
+
+    text-align: center;
+}
+
+.summary-cards .card h2,
+.stat strong {
+    margin: 0;
+
+    font-size: 28px;
+
+    color: #ffffff;
+}
+
+.summary-cards .card p,
+.stat span {
+    display: block;
+
+    margin: 4px 0 0 0;
+
+    color: #666666;
+
+    font-size: 13px;
+}
+
+
+/* ==========================================
+   BOOK AVAILABILITY
+   ========================================== */
+
+.book-row {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 15px;
+
+    padding: 11px 0;
+
+    border-bottom: 1px solid #eeeeee;
+}
+
+.book-row:last-child {
+    border-bottom: none;
+}
+
+.available {
+    color: #347a4a;
+}
+
+.low-stock {
+    color: #c0392b;
+
+    font-weight: bold;
+}
+
+.unavailable {
+    color: #c0392b;
+
+    font-weight: bold;
+}
+
+
+/* ==========================================
+   FORMS
+   ========================================== */
+
+form {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+    margin-bottom: 12px;
+}
+
+.form-grid {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 10px;
+}
+
+form input,
+form select,
+input,
+select {
+    padding: 6px 8px;
+
+    border: 1px solid #cccccc;
+
+    border-radius: 4px;
+
+    font-size: 14px;
+
+    background: #ffffff;
+}
+
+form input:focus,
+form select:focus,
+input:focus,
+select:focus {
+    outline: none;
+
+    border-color: #2c6e49;
+}
+
+
+/* ==========================================
+   TABLES
+   ========================================== */
+
+table {
+    width: 100%;
+
+    border-collapse: collapse;
+}
+
+th,
+td {
+    text-align: left;
+
+    padding: 8px;
+
+    border-bottom: 1px solid #eeeeee;
+
+    font-size: 14px;
+}
+
+th {
+    background: #fafafa;
+}
+
+tr:hover {
+    background: #f8f8f8;
+}
+
+
+/* ==========================================
+   TABLE ACTIONS
+   ========================================== */
+
+.actions,
+.action-group {
+    display: flex;
+
+    gap: 6px;
+
+    flex-wrap: wrap;
+}
+
+.actions button {
+    margin-right: 6px;
+}
+
+
+/* ==========================================
+   ROLES
+   ========================================== */
+
+.role-label {
+    text-transform: capitalize;
+}
+
+
+/* ==========================================
+   EMPTY MESSAGE
+   ========================================== */
+
+.empty {
+    color: #777777;
+}
+
+
+/* ==========================================
+   MESSAGES
+   ========================================== */
+
+.error {
+    color: #c0392b;
+
+    font-size: 13px;
+
+    margin-bottom: 10px;
+}
+
+.notice {
+    background: #e8f6ee;
+
+    border: 1px solid #b9e5cb;
+
+    color: #226644;
+
+    padding: 8px 12px;
+
+    border-radius: 4px;
+
+    font-size: 14px;
+
+    margin-bottom: 12px;
+}
+
+.message {
+    padding: 8px 12px;
+
+    background: #f8dddd;
+
+    border: 1px solid #e2bcbc;
+
+    color: #8a2f2f;
+
+    border-radius: 4px;
+
+    margin-bottom: 12px;
+}
+
+
+/* ==========================================
+   SUB NAVIGATION
+   ========================================== */
+
+.subnav {
+    display: flex;
+
+    gap: 8px;
+
+    margin-bottom: 16px;
+
+    flex-wrap: wrap;
+}
+
+.subnav button {
+    padding: 6px 12px;
+
+    border: 1px solid rgba(255, 255, 255, 0.5);
+
+    background: rgba(255, 255, 255, 0.85);
+
+    border-radius: 4px;
+
+    cursor: pointer;
+
+    font-size: 13px;
+
+    color: #222;
+}
+
+.subnav button:hover {
+    background: #ffffff;
+}
+
+.subnav button.active {
+    background: #1f4e3d;
+
+    color: #ffffff;
+
+    border-color: #1f4e3d;
+}
+
+
+/* ==========================================
+   AUTHENTICATION PAGES
+   ========================================== */
+
+.auth-wrapper {
+    position: relative;
+
+    z-index: 1;
+
+    min-height: 100vh;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: flex-start;
+
+    padding-top: 40px;
+
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.auth-card {
+    width: 100%;
+
+    max-width: 340px;
+
+    text-align: center;
+
+    background: rgba(255, 255, 255, 0.93);
+
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+
+    border: 1px solid rgba(255, 255, 255, 0.6);
+
+    border-radius: 8px;
+
+    padding: 24px 20px;
+
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+}
+
+.auth-card h1,
+.auth-card h2 {
+    margin: 0 0 4px 0;
+
+    color: #1f4e3d;
+}
+
+.auth-card p,
+.auth-subtitle {
+    color: #666666;
+
+    margin: 0 0 16px 0;
+
+    font-size: 14px;
+}
+
+.auth-form {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+}
+
+.auth-form input,
+.auth-form select {
+    width: 100%;
+}
+
+.auth-form button {
+    width: 100%;
+}
+
+.auth-switch {
+    margin-top: 14px;
+
+    font-size: 14px;
+}
+
+.auth-hint {
+    margin-top: 10px;
+
+    font-size: 12px;
+
+    color: #999999;
+}
+
+.auth-links {
+    margin-top: 14px;
+}
+
+.auth-links a {
+    color: #2c6e49;
+
+    text-decoration: none;
+}
+
+.auth-links a:hover {
+    text-decoration: underline;
+}
+
+.link-btn {
+    background: none;
+
+    border: none;
+
+    color: #2c6e49;
+
+    cursor: pointer;
+
+    text-decoration: underline;
+
+    font-size: 14px;
+
+    padding: 0;
+}
+
+
+/* ==========================================
+   DEMO BOX
+   ========================================== */
+
+.demo-box {
+    margin-top: 16px;
+
+    padding: 10px;
+
+    background: rgba(240, 240, 240, 0.9);
+
+    border: 1px solid #dddddd;
+
+    border-radius: 4px;
+
+    font-size: 14px;
+
+    white-space: pre-line;
+}
+
+
+/* ==========================================
+   HIDE ELEMENTS
+   ========================================== */
+
+.hidden {
+    display: none !important;
+}
+
+
+/* ==========================================
+   LOGOUT
+   ========================================== */
+
+.logout {
+    background: #c0392b !important;
+
+    color: #ffffff;
+}
+
+.logout:hover {
+    background: #a93226 !important;
+}
+
+
+/* ==========================================
+   HEADER ROW
+   ========================================== */
+
+.header-row {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: flex-start;
+
+    gap: 12px;
+}
+
+.header-row .btn {
+    flex-shrink: 0;
+
+    margin-top: 4px;
+}
+
+
+/* ==========================================
+   MOBILE
+   ========================================== */
+
+@media (max-width: 800px) {
+
+    .app {
+        padding: 12px;
+    }
+
+    .top-nav {
+        flex-wrap: wrap;
+    }
+
+    .stats {
+        display: grid;
+
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .header-row {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .app {
+        padding: 10px;
+    }
+
+    header {
+        padding: 12px;
+    }
+
+    header h1 {
+        font-size: 21px;
+    }
+
+    nav {
+        gap: 5px;
+    }
+
+    nav button {
+        padding: 7px 10px;
+
+        font-size: 13px;
+    }
+
+    .stats,
+    .summary-cards {
+        grid-template-columns: 1fr;
+
+        display: grid;
+    }
+
+    .book-row {
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+    table {
+        display: block;
+
+        overflow-x: auto;
+    }
+
+    .card,
+    .panel {
+        padding: 12px;
+    }
+}
+
+/* ==========================================
+   FINAL UI ALIGNMENT
+   ========================================== */
+
+/* Application header / top navigation */
+.top-nav {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 16px;
+    padding: 14px 18px;
+}
+
+.site-title {
+    flex: 1 1 auto;
+    min-width: 190px;
+}
+
+.site-title h2 {
+    margin: 0 0 4px 0;
+    color: #ffffff;
+    font-size: 21px;
+    line-height: 1.2;
+}
+
+.site-title p {
+    margin: 0;
+    color: #e4e9e6;
+    font-size: 13px;
+    text-transform: capitalize;
+}
+
+.top-links {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin: 0;
+}
+
+.top-links a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 34px;
+    padding: 7px 12px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.85);
+    color: #222222;
+    text-decoration: none;
+    font-size: 13px;
+    line-height: 1;
+    white-space: nowrap;
+    transition: background 0.15s ease, color 0.15s ease;
+}
+
+.top-links a:hover {
+    background: #ffffff;
+}
+
+.top-links a.active {
+    background: #2c6e49;
+    border-color: #2c6e49;
+    color: #ffffff;
+}
+
+/* Keep logout visually consistent with the navigation */
+.top-nav .logout {
+    flex: 0 0 auto;
+    min-height: 34px;
+    padding: 7px 12px;
+    border: 1px solid #c0392b !important;
+    border-radius: 4px;
+    font-size: 13px;
+    white-space: nowrap;
+}
+
+/* Page header is a content heading, not another navigation bar */
+.page-header {
+    background: transparent;
+    border-radius: 0;
+    padding: 0 2px;
+    margin: 0 0 20px 0;
+    box-shadow: none;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+}
+
+.page-header h1 {
+    margin: 0 0 4px 0;
+    color: #ffffff;
+    font-size: 24px;
+}
+
+.page-header p {
+    margin: 0;
+    color: #e4e9e6;
+}
+
+/* Make normal buttons match the existing green theme */
+button:not(.logout) {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.auth-page button {
+    padding: 8px 14px;
+    border: none;
+    border-radius: 4px;
+    background: #2c6e49;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.auth-page button:hover {
+    background: #245b3d;
+}
+
+.auth-page button.secondary {
+    background: #888888;
+}
+
+.auth-page button.secondary:hover {
+    background: #707070;
+}
+
+/* Authentication wrapper used by the JavaScript */
+.auth-page {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 40px 20px;
+}
+
+.auth-page .auth-card {
+    width: 100%;
+    max-width: 340px;
+}
+
+/* Better spacing when the top navigation wraps */
+@media (max-width: 800px) {
+    .top-nav {
+        align-items: stretch;
+        flex-wrap: wrap;
+    }
+
+    .site-title {
+        flex: 1 1 100%;
+    }
+
+    .top-links {
+        flex: 1 1 auto;
+        justify-content: flex-start;
+    }
+
+    .top-nav .logout {
+        align-self: center;
+    }
+}
+
+@media (max-width: 600px) {
+    .top-nav {
+        gap: 10px;
+        padding: 12px;
+    }
+
+    .site-title {
+        min-width: 0;
+    }
+
+    .site-title h2 {
+        font-size: 19px;
+    }
+
+    .top-links {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .top-links a {
+        width: 100%;
+        padding: 8px 10px;
+    }
+
+    .top-nav .logout {
+        width: 100%;
+    }
+}
+
+
+/* Book list action buttons */
+.action-group {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.action-group button {
+    padding: 6px 10px;
+    border: none;
+    border-radius: 4px;
+    background: #2c6e49;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.action-group button:hover { opacity: 0.9; }
+.action-group button.danger { background: #c0392b; }
+.action-group button.secondary { background: #888888; }
+
+/* ==========================================
+   MOLIBETSANE-SPECIFIC ELEMENTS
+   (styled in the same visual language as above)
+   ========================================== */
+
+/* Plain forms inside panels (the auth form keeps its own layout) */
+.panel form {
+    display: block;
+    margin-bottom: 0;
+}
+
+.panel .form-grid {
+    margin-bottom: 10px;
+}
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+}
+
+/* Labels stay in the page for screen readers but are not drawn,
+   the same way the reference system uses placeholders only */
+.form-field label,
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.form-field input,
+.form-field select {
+    width: 100%;
+}
+
+.form-field input:disabled {
+    background: #f1f1f1;
+    color: #777777;
+    cursor: not-allowed;
+}
+
+.field-error {
+    color: #c0392b;
+    font-size: 13px;
+}
+
+.field-hint {
+    color: #777777;
+    font-size: 12px;
+}
+
+.form-buttons {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+/* Buttons (same look as button.btn above, also for links) */
+.btn {
+    display: inline-block;
+    padding: 8px 14px;
+    border: none;
+    border-radius: 4px;
+    background: #2c6e49;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 14px;
+    text-decoration: none;
+    text-align: center;
+}
+
+.btn:hover {
+    opacity: 0.9;
+}
+
+.btn-secondary {
+    background: #888888;
+}
+
+.btn-danger {
+    background: #c0392b;
+}
+
+.btn-small {
+    padding: 6px 10px;
+    font-size: 13px;
+}
+
+.btn:disabled,
+.action-group button:disabled {
+    background: #bbbbbb;
+    cursor: not-allowed;
+    opacity: 1;
+}
+
+.action-group button.secondary:disabled {
+    background: #bbbbbb;
+}
+
+/* Small text helpers */
+.panel-note {
+    margin: -6px 0 14px 0;
+    color: #666666;
+    font-size: 14px;
+}
+
+.panel-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 14px;
+}
+
+.panel-top h2 {
+    margin: 0;
+}
+
+.empty-text {
+    color: #777777;
+}
+
+.small-text {
+    display: block;
+    margin-top: 2px;
+    color: #777777;
+    font-size: 12px;
+}
+
+.you-note {
+    color: #777777;
+    font-size: 13px;
+}
+
+/* Search box, filter and Cards / Table switch */
+.toolbar {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.search-input {
+    min-width: 240px;
+    padding: 6px 8px;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    font-size: 14px;
+    background: #ffffff;
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: #2c6e49;
+}
+
+.toggle-group {
+    display: flex;
+    gap: 8px;
+}
+
+.toggle-btn {
+    padding: 6px 12px;
+    border: 1px solid #cccccc;
+    background: #ffffff;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 13px;
+    color: #222222;
+}
+
+.toggle-btn:hover {
+    background: #f4f4f4;
+}
+
+.toggle-btn-active,
+.toggle-btn-active:hover {
+    background: #1f4e3d;
+    color: #ffffff;
+    border-color: #1f4e3d;
+}
+
+/* Book cards on the dashboard */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+    gap: 12px;
+}
+
+.book-card {
+    display: flex;
+    flex-direction: column;
+    padding: 14px;
+    background: #ffffff;
+    border: 1px solid #eeeeee;
+    border-radius: 6px;
+}
+
+.book-card-genre {
+    color: #2c6e49;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+.book-card h3 {
+    margin: 4px 0 4px 0;
+    font-size: 16px;
+    color: #222222;
+}
+
+.book-card-author,
+.book-card-isbn {
+    margin: 0 0 6px 0;
+    font-size: 13px;
+    color: #666666;
+}
+
+.book-card-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    margin-top: auto;
+    padding-top: 8px;
+}
+
+.book-card-count {
+    font-size: 20px;
+    color: #222222;
+}
+
+.book-card-count small {
+    font-size: 12px;
+    color: #666666;
+}
+
+.book-card-action {
+    margin-top: 10px;
+}
+
+/* Status words (same colours as .available / .low-stock) */
+.badge {
+    display: inline;
+    white-space: nowrap;
+}
+
+.badge-ok {
+    color: #347a4a;
+}
+
+.badge-low,
+.badge-out {
+    color: #c0392b;
+    font-weight: bold;
+}
+
+/* Tables */
+.table-wrap {
+    overflow-x: auto;
+}
+
+td.actions {
+    white-space: nowrap;
+}
+
+/* Messages */
+.message-success {
+    background: #e8f6ee;
+    border-color: #b9e5cb;
+    color: #226644;
+}
+
+.message-error {
+    background: #f8dddd;
+    border-color: #e2bcbc;
+    color: #8a2f2f;
+}
+
+.message-warning {
+    background: #fdf1dc;
+    border-color: #ecd3a2;
+    color: #7a5a1d;
+}
+
+.message a {
+    color: inherit;
+    font-weight: bold;
+}
+
+.message {
+    font-size: 14px;
+}
+
+/* Login page extras */
+.auth-form .form-field {
+    text-align: left;
+}
+
+.auth-form .show-password {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    color: #666666;
+    cursor: pointer;
+}
+
+.auth-form .show-password input {
+    width: auto;
+}
+
+.auth-card .message {
+    text-align: left;
+}
+
+.auth-card .demo-box {
+    text-align: center;
+}
+
+/* The app wrapper is also used for the not-found / admin-only messages */
+.content > .panel .btn {
+    margin-top: 4px;
+}
+
+@media (max-width: 600px) {
+    .search-input {
+        min-width: 0;
+        width: 100%;
+    }
+
+    .toolbar {
+        width: 100%;
+    }
+}
+
+/* Keep all menu links on one row on wide screens (the title wraps instead),
+   and let six stat boxes sit on one row */
+@media (min-width: 801px) {
+    .top-links {
+        flex-wrap: nowrap;
+    }
+
+    .site-title {
+        min-width: 150px;
+    }
+}
+
+.stat {
+    min-width: 120px;
+}
